@@ -36,6 +36,7 @@ function draw() {
     background(51);
     stroke(255, 200);
     strokeWeight(2);
+    //Dead line
     line(0, height - 60, width, height - 60);
 
     ship.show();
@@ -83,7 +84,7 @@ function draw() {
     }
 
     for (var i = monsters.length - 1; i >= 0; i--) {
-      if (monsters[i].y >= 625) {
+      if (monsters[i].y >= height - 60) {
         mode = 3;
       }
     }
@@ -142,4 +143,6 @@ function victory() {
 
 function preload() {
   myFont = loadFont("./assets/fonts/languar.ttf");
+  monsterImage = loadImage("./assets/image/monster.png");
+  // shipImage = loadImage("./assets/image/ship.png");
 }

@@ -1,5 +1,5 @@
 function Monster(x, y) {
-  this.hp = Math.floor(Math.random() * (3 - 1) + 1);
+  this.hp = 1;
   this.x = x;
   this.y = y;
   this.r = 15;
@@ -9,7 +9,9 @@ function Monster(x, y) {
 
   this.show = function () {
     fill(255);
-    ellipse(this.x, this.y, this.r * 2, this.r * 2);
+    // ellipse(this.x, this.y, this.r * 2, this.r * 2);
+
+    image(monsterImage, this.x, this.y, this.r * 2, this.r * 2);
   };
 
   this.move = function () {
