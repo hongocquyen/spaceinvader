@@ -7,13 +7,8 @@ function Monster(x, y) {
   var dx = 1;
   var dy = 40;
 
-  
   this.show = function () {
-    
-    if (this.hp === 2) {
-      fill(255,0,0);
-    }
-    else fill(255);
+    fill(255);
     ellipse(this.x, this.y, this.r * 2, this.r * 2);
   };
 
