@@ -1,8 +1,8 @@
 # spaceinvader
 
 ### todo
-- try again (x)
-- use mouse to play (x)
+- try again
+- use mouse to play
 - add figure to obj (image)
 	animation
 	sound effect
