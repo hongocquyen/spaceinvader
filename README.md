@@ -7,9 +7,12 @@
 	- animation  	
 	- sound effect -> done
 	- background	-> done
-- main menu (pause, how to play, score) -> 	score(done), 
+- main menu (pause, how to play, score) -> 	
+	- score(done)
+	- pause
+	- how to play
 - handle magic number -> done
 - change font family -> done
 - design new level (option) 
-	monster hp
-	fire back ->	done
+	- monster hp
+	- fire back ->	done
