@@ -5,7 +5,7 @@ function Monster(x, y) {
   this.r = 15;
   this.toDelete = false;
   var dx = 1;
-  var dy = 40;
+  var dy = this.r*2.5;
 
   this.show = function () {
     fill(255);

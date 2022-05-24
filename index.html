@@ -20,9 +20,6 @@
       referrerpolicy="no-referrer"
     ></script>
 
-    <!-- <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script> -->
-
     <script src="sketch.js"></script>
     <script src="./objects/ship.js"></script>
     <script src="./objects/monster.js"></script>
@@ -34,7 +31,10 @@
       <p id="winning-container-title">Player</p>
       <img id="winner-img" src="assets/image/ship.png" />
       <p id="winning-container-subtitle">WON</p>
-      <button class="again" type="submit" onclick="ResetAll()">Play again</button>
+      <p id="score">Score: 0</p>
+      <button class="again" type="submit" onclick="ResetAll()">
+        Play again
+      </button>
     </div>
     <!-- <div id="start" style="display: none">
       <a href="#" onclick="startGame()">Start Game</a>

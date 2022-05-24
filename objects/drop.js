@@ -10,21 +10,21 @@ function Drop(x, y) {
   };
   this.showDown = function () {
     noStroke();
-    fill(0, 0, 255, 150);
-    ellipse(this.x, this.y, this.r * 2, this.r * 4);
+    fill(0, 255, 0, 150);
+    ellipse(this.x, this.y, this.r * 2, this.r * 8);
   };
 
   this.move = function () {
-    this.y = this.y - 5;
+    this.y -= 10;
   };
 
   this.moveDown = function () {
-    this.y += 7;
+    this.y += 10;
   };
 
   this.hits = function (Monster) {
     var d = dist(this.x, this.y, Monster.x, Monster.y);
-    if (d < this.r + Monster.r - 15) {
+    if (d < this.r + Monster.r) {
       return true;
     } else return false;
   };

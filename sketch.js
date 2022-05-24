@@ -9,18 +9,11 @@ var score = 0;
 var count = 0;
 
 function setup() {
-  createCanvas(windowWidth - 50, windowHeight - 50);
-
-  ship = new Ship();
-  for (var i = 0; i < 7; i++) {
-    monsters[i] = new Monster(i * 40 + 50, 30);
-  }
-  for (var i = 0; i < 7; i++) {
-    monsters[i + 7] = new Monster(i * 40 + 50, 65);
-  }
-  for (var i = 0; i < 7; i++) {
-    monsters[i + 14] = new Monster(i * 40 + 50, 100);
-  }
+  createCanvas(windowWidth - 5, windowHeight - 5);
+  ResetAll();
+  mode = 0;
+  // var button = createButton("reset");
+  // button.mousePressed(ResetAll);
 }
 
 function draw() {
@@ -41,9 +34,13 @@ function draw() {
     background(backgroundImage);
     stroke(255, 200);
     strokeWeight(2);
+
+    textSize(30);
+    fill(255);
+    textFont(myFont);
+    text("Score : " + score, width - 200, 40);
     //Dead line
     // line(0, height - 60, width, height - 60);
-    //backgroundSound.play();
     ship.show();
     ship.move();
 
@@ -105,7 +102,7 @@ function draw() {
       }
     }
 
-    //Delete drop
+    //Delete dropDown
     for (var i = dropsDown.length - 1; i >= 0; i--) {
       if (dropsDown[i].toDelete) {
         dropsDown.splice(i, 1);
@@ -118,8 +115,6 @@ function draw() {
         monsters.splice(i, 1);
       }
     }
-    textSize(30);
-    text("Score : " + score, width - 200, 40);
 
     for (var i = monsters.length - 1; i >= 0; i--) {
       if (monsters[i].y >= height - 60) {
@@ -131,40 +126,46 @@ function draw() {
       mode = 2;
     }
 
-    if (count === 100) {
+    if (count === 75) {
       console.log(count);
 
       generateMonsterDrop();
       count = 0;
     }
-    // setTimeout(generateMonsterDrop, 3000);
+
     count++;
   }
 
   if (mode == 2) {
-    displayWinnerContainer(mode);
+    // remove()
+    // noCanvas();
+    displayContainer(mode);
   }
 
   if (mode == 3) {
-    displayWinnerContainer(mode);
+    // remove()
+    // noCanvas();
+    displayContainer(mode);
   }
 }
 
-function displayWinnerContainer(mode) {
+function displayContainer(mode) {
   if (mode === 2) {
     document.getElementById("winning-container-title").innerHTML = "Player";
     document.getElementById("winning-container-subtitle").innerHTML = "WON";
+    document.getElementById("score").innerHTML = "Score: " + score;
   } else if (mode === 3) {
     document.getElementById("winning-container-title").innerHTML = "Player";
     document.getElementById("winning-container-subtitle").innerHTML = "LOSE";
+    document.getElementById("score").innerHTML = "Score: " + score;
   }
   const winnerContainer = document.getElementById("winning-container");
-  // console.log(winnerContainer);
+
   winnerContainer.classList.remove("hide");
-  winnerContainer.style.opacity = 0;
-  setTimeout(() => {
-    winnerContainer.style.opacity = 1;
-  }, 750);
+  // winnerContainer.style.opacity = 0;
+  // setTimeout(() => {
+  //   winnerContainer.style.opacity = 1;
+  // }, 750);
 }
 
 function generateMonsterDrop() {
@@ -179,47 +180,75 @@ function mouseClicked() {
   shootingSound.play();
 }
 
-function keyReleased() {
-  if (key != " " && keyCode !== UP_ARROW) {
-    ship.setDir(0);
-  }
-}
+// function keyReleased() {
+//   if (key != " " && keyCode !== UP_ARROW) {
+//     ship.setDir(0);
+//   }
+// }
 
 function keyPressed() {
-  if (key === " " || keyCode === UP_ARROW) {
-    var drop = new Drop(ship.x, height - 46);
-    drops.push(drop);
-    shootingSound.play();
-  }
-  if (keyCode === RIGHT_ARROW) ship.setDir(1);
-  else if (keyCode === LEFT_ARROW) ship.setDir(-1);
+  // if (key === " " || keyCode === UP_ARROW) {
+  //   var drop = new Drop(ship.x, height - 46);
+  //   drops.push(drop);
+  //   shootingSound.play();
+  // }
+  // if (keyCode === RIGHT_ARROW) ship.setDir(1);
+  // else if (keyCode === LEFT_ARROW) ship.setDir(-1);
   if (keyCode === ENTER) {
     mode = 1;
   }
 }
 
-function gameOver() {
-  background(51);
-  fill(255);
-  stroke(100);
-  strokeWeight(2);
-  textFont(myFont);
-  textSize(30);
-  text("Game Over", width / 2 - 70, height / 2);
-}
+// function gameOver() {
+//   background(51);
+//   fill(255);
+//   stroke(100);
+//   strokeWeight(2);
+//   textFont(myFont);
+//   textSize(30);
+//   text("Game Over", width / 2 - 70, height / 2);
+// }
 
-function victory() {
-  background(51);
-  fill(255);
-  stroke(100);
-  strokeWeight(2);
-  textFont(myFont);
-  textSize(30);
-  text("You win!!", width / 2 - 60, height / 2);
+// function victory() {
+//   background(51);
+//   fill(255);
+//   stroke(100);
+//   strokeWeight(2);
+//   textFont(myFont);
+//   textSize(30);
+//   text("You win!!", width / 2 - 60, height / 2);
+// }
+
+function ResetAll() {
+  document.getElementById("winning-container").classList.add("hide");
+
+  // backgroundSound.stop();
+  // backgroundSound.play();
+
+  monsters = [];
+  drops = [];
+  dropsDown = [];
+
+  mode = 1;
+  score = 0;
+  count = 0;
+
+  ship = new Ship();
+
+  //Level-1
+  for (var i = 0; i < 7; i++) {
+    monsters[i] = new Monster(i * 40 + 50, 30);
+  }
+  for (var i = 0; i < 7; i++) {
+    monsters[i + 7] = new Monster(i * 40 + 50, 65);
+  }
+  for (var i = 0; i < 7; i++) {
+    monsters[i + 14] = new Monster(i * 40 + 50, 100);
+  }
 }
 
 function preload() {
-  myFont = loadFont("./assets/fonts/languar.ttf");
+  myFont = loadFont("./assets/fonts/nerkoone.ttf");
   monsterImage = loadImage("./assets/image/monster.png");
   shipImage = loadImage("./assets/image/ship.png");
   backgroundImage = loadImage("./assets/image/background.png");
