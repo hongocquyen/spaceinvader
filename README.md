@@ -1,6 +1,6 @@
-# spaceinvader
+# Space Invader
 
-### todo
+### Feature
 - try again -> done
 - use mouse to play -> done
 - add figure to obj (image)
@@ -16,3 +16,5 @@
 	- move faster, shoot faster -> done
 	- fire back ->	done
 - some monsters contain power up, help shoot 3 lanes of projectiles
+
+Visit: https://hongocquyen.github.io/spaceinvader/
