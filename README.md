@@ -1,6 +1,6 @@
-# spaceinvader
+# Space Invader
 
-### todo
+### Feature
 - try again -> done
 - use mouse to play -> done
 - add figure to obj (image)
