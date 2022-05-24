@@ -97,6 +97,10 @@ function draw() {
       drops[i].show();
       drops[i].move();
 
+
+      if (drops[i].y < 0){
+        drops[i].disapper();
+      }
       for (var j = 0; j < monsters.length; j++) {
         if (drops[i].hits(monsters[j])) {
           monsters[j].hp--;
