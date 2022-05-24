@@ -51,6 +51,4 @@ function Ship() {
     } else return false;
   };
 
-
-  
 }

@@ -11,7 +11,7 @@ function Monster(x, y, level) {
 
   this.show = function () {
     fill(255);
-    image(monsterImage, this.x, this.y, this.r * 2, this.r * 2);
+    image(monsterImage[level - 1], this.x, this.y, this.r * 2, this.r * 2);
   };
 
   this.showDeath = function () {

@@ -5,6 +5,7 @@ var monsters = [];
 var drops = [];
 var dropsDown = [];
 var bonusArray = [];
+var monsterImage = [];
 var mode = 0;
 // mode: 0, waiting screen
 //       1, star playing
@@ -30,10 +31,10 @@ function setup() {
 
 function draw() {
   clear();
-  
+
   if (mode == 0) {
     background(backgroundImage);
-    
+
     fill(255);
     stroke(100);
     strokeWeight(2);
@@ -245,9 +246,11 @@ function displayContainer(mode) {
   // LOSE
   else if (mode === 3) {
     document.getElementById("winning-container-title").innerHTML = "Player";
-    document.getElementById("winning-container-subtitle").innerHTML = "DEFEAT :(";
+    document.getElementById("winning-container-subtitle").innerHTML =
+      "DEFEAT :(";
     document.getElementById("score").innerHTML = "Score: " + score;
-    document.getElementById("winner-img").src = "assets/image/monster.png";
+    document.getElementById("winner-img").src =
+      "assets/image/monster" + level + ".png";
 
     document.getElementById("btn").innerHTML = "Play again";
 
@@ -322,7 +325,13 @@ function ResetAll() {
 function preload() {
   myFont = loadFont("./assets/fonts/nerkoone.ttf");
   myFontPrimary = loadFont("./assets/fonts/languar.ttf");
-  monsterImage = loadImage("./assets/image/monster.png");
+
+  monsterImage.push(loadImage("./assets/image/monster1.png"));
+  monsterImage.push(loadImage("./assets/image/monster2.png"));
+  monsterImage.push(loadImage("./assets/image/monster3.png"));
+  monsterImage.push(loadImage("./assets/image/monster4.png"));
+  monsterImage.push(loadImage("./assets/image/monster5.png"));
+
   shipImage = loadImage("./assets/image/ship.png");
   backgroundImage = loadImage("./assets/image/background.png");
 
