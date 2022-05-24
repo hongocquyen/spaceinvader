@@ -1,21 +1,25 @@
-function Monster(x, y) {
+function Monster(x, y, level) {
   this.hp = 1;
   this.x = x;
   this.y = y;
   this.r = 15;
+  this.level = level;
   this.toDelete = false;
-  var dx = 1;
-  var dy = this.r*2.5;
+  this.bonus = false;
+  var dx = 2;
+  var dy = this.r * 2.5;
 
   this.show = function () {
     fill(255);
-    // ellipse(this.x, this.y, this.r * 2, this.r * 2);
-
     image(monsterImage, this.x, this.y, this.r * 2, this.r * 2);
   };
 
+  this.showDeath = function () {
+    image(boomImage, this.x, this.y, this.r * 2, this.r * 2);
+  };
+
   this.move = function () {
-    this.x = this.x + dx;
+    this.x = this.x + dx * level;
   };
 
   this.die = function () {

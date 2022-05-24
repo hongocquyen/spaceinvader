@@ -9,15 +9,13 @@ function Ship() {
 
     image(shipImage, this.x - 25, this.y, this.r, this.r);
 
-    // rectMode(CENTER);
-    // rect(this.x, height - 20, 30, 40);
-    // rect(this.x, height - 10, 50, 20);
   };
 
   this.setDir = function (dir) {
     this.xdir = dir;
   };
   this.move = function () {
+    // //uncomment to line 32 to play by arrow
     // if (this.x <= 0) {
     //   if (keyCode === LEFT_ARROW) {
     //     this.xdir = 0;

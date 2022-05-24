@@ -21,6 +21,7 @@
     ></script>
 
     <script src="sketch.js"></script>
+    <script src="./objects/powerup.js"></script>
     <script src="./objects/ship.js"></script>
     <script src="./objects/monster.js"></script>
     <script src="./objects/drop.js"></script>
@@ -32,16 +33,9 @@
       <img id="winner-img" src="assets/image/ship.png" />
       <p id="winning-container-subtitle">WON</p>
       <p id="score">Score: 0</p>
-      <button class="again" type="submit" onclick="ResetAll()">
+      <button id="btn" class="again" type="submit" onclick="ResetAll()">
         Play again
       </button>
     </div>
-    <!-- <div id="start" style="display: none">
-      <a href="#" onclick="startGame()">Start Game</a>
-    </div>
-    <div id="game-over" style="display: none">
-      <h1>Game Over</h1>
-      <a href="#" onclick="startGame()"><button>Start Game</button></a>
-    </div> -->
   </body>
 </html>

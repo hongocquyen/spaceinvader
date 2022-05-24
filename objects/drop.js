@@ -1,13 +1,19 @@
 function Drop(x, y) {
   this.x = x;
   this.y = y;
+  
+  // radius of hitbox
   this.r = 2.5;
   this.toDelete = false;
+  
+  // drop by player
   this.show = function () {
     noStroke();
     fill(255, 150);
     ellipse(this.x, this.y, this.r * 2, this.r * 4);
   };
+
+  // drop by monster
   this.showDown = function () {
     noStroke();
     fill(0, 255, 0, 150);
