@@ -1,11 +1,13 @@
 function Ship() {
   this.x = width / 2;
+  this.y = height - 60;
+  this.r = 40;
   this.xdir = 0;
   this.show = function () {
     noStroke();
     fill(255);
 
-    image(shipImage, this.x-40, height - 80, 80, 80);
+    image(shipImage, this.x - 25, this.y, this.r, this.r);
 
     // rectMode(CENTER);
     // rect(this.x, height - 20, 30, 40);
@@ -30,7 +32,27 @@ function Ship() {
     //   }
     // }
     // this.x += this.xdir * 5;
-    this.x = mouseX;
-    
+    if (mouseX < this.r / 2) {
+      this.x = this.r / 2;
+    } else if (mouseX > width - this.r / 2) {
+      this.x = width - this.r / 2;
+    } else if (mouseY < this.r / 2) {
+      this.y = this.r / 2;
+    } else if (mouseY > height - this.r / 2) {
+      this.y = height - this.r / 2;
+    } else {
+      this.x = mouseX;
+      this.y = mouseY;
+    }
   };
+
+  this.hits = function (Monster) {
+    var d = dist(this.x, this.y, Monster.x, Monster.y);
+    if (d < this.r - 15 + Monster.r) {
+      return true;
+    } else return false;
+  };
+
+
+  
 }
