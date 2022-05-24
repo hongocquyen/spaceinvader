@@ -2,9 +2,14 @@ var ship;
 var monsters = [];
 var drops = [];
 var mode = 0;
+var backgroundSound;
+var shootingSound;
+var score = 0;
+
 
 function setup() {
   createCanvas(windowWidth - 50, windowHeight - 50);
+  
 
   ship = new Ship();
   for (var i = 0; i < 7; i++) {
@@ -33,12 +38,12 @@ function draw() {
   }
 
   if (mode == 1) {
-    background(51);
+    background(backgroundImage);
     stroke(255, 200);
     strokeWeight(2);
     //Dead line
     line(0, height - 60, width, height - 60);
-
+    //backgroundSound.play();
     ship.show();
     ship.move();
 
@@ -66,6 +71,7 @@ function draw() {
           drops[i].disapper();
           if (monsters[j].hp == 0) {
             monsters[j].die();
+            score++;
           }
         }
       }
@@ -82,6 +88,9 @@ function draw() {
         monsters.splice(i, 1);
       }
     }
+    textSize(30);
+    text("Score : " + score, windowWidth-200, 100);
+    
 
     for (var i = monsters.length - 1; i >= 0; i--) {
       if (monsters[i].y >= height - 60) {
@@ -113,6 +122,7 @@ function keyPressed() {
   if (key === " " || keyCode === UP_ARROW) {
     var drop = new Drop(ship.x, height - 46);
     drops.push(drop);
+    shootingSound.play();
   }
   if (keyCode === RIGHT_ARROW) ship.setDir(1);
   else if (keyCode === LEFT_ARROW) ship.setDir(-1);
@@ -144,5 +154,8 @@ function victory() {
 function preload() {
   myFont = loadFont("./assets/fonts/languar.ttf");
   monsterImage = loadImage("./assets/image/monster.png");
-  // shipImage = loadImage("./assets/image/ship.png");
+  shipImage = loadImage("./assets/image/ship.png");
+  backgroundImage = loadImage("./assets/image/background.png");
+  backgroundSound = loadSound("./assets/sound/backgroundSound.mp3");
+  shootingSound = loadSound("./assets/sound/shootingSound.mp3");
 }
