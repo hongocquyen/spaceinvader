@@ -1,4 +1,5 @@
 # Space Invader
+A simple game project using p5js (HTML5 & Canvas).
 
 ### Feature
 - try again -> done
