@@ -1,5 +1,5 @@
-function Monster(x, y, level) {
-  this.hp = 1;
+function Monster(x, y, level, hp = 1) {
+  this.hp = hp;
   this.x = x;
   this.y = y;
   this.r = 15;

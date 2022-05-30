@@ -97,14 +97,13 @@ function draw() {
       drops[i].show();
       drops[i].move();
 
-
-      if (drops[i].y < 0){
-        drops[i].disapper();
+      if (drops[i].y < 0) {
+        drops[i].disappear();
       }
       for (var j = 0; j < monsters.length; j++) {
         if (drops[i].hits(monsters[j])) {
           monsters[j].hp--;
-          drops[i].disapper();
+          drops[i].disappear();
           if (monsters[j].hp == 0) {
             monsters[j].die();
             monsters[j].showDeath();
@@ -125,7 +124,7 @@ function draw() {
       bonusArray[i].move();
       if (bonusArray[i].hits(ship)) {
         powerUp = true;
-        bonusArray[i].disapper();
+        bonusArray[i].disappear();
       }
     }
     //Display powerUp
@@ -142,7 +141,7 @@ function draw() {
       dropsDown[i].moveDown();
 
       if (dropsDown[i].y > windowHeight) {
-        dropsDown[i].disapper();
+        dropsDown[i].disappear();
       }
       if (dropsDown[i].hitShip(ship)) {
         mode = 3;
@@ -219,7 +218,6 @@ function generateMonsterByLevel(level) {
   for (var i = 0; i < 7; i++) {
     monsters[i + 14] = new Monster(i * 40 + 50, 100, level);
   }
-
   shootingDelay = (maxLevel - level + 1) * 15;
 }
 function displayContainer(mode) {

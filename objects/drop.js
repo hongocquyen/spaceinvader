@@ -42,7 +42,7 @@ function Drop(x, y) {
     } else return false;
   };
 
-  this.disapper = function () {
+  this.disappear = function () {
     this.toDelete = true;
   };
 }
